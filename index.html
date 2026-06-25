@@ -7,21 +7,21 @@
   <meta name="description" content="ORBIT is a live, anonymous map of where the right energy is — so you can find the good crowd. No account. No name. No tracking." />
   <meta name="theme-color" content="#182045" />
 
-  <!-- Google Analytics 4 — loaded only after cookie consent -->
+  <!-- Google tag (gtag.js) with Consent Mode v2 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D28NXLR92W"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    window.loadGA = function () {
-      if (window.__gaLoaded) return;
-      window.__gaLoaded = true;
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-D28NXLR92W';
-      document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', 'G-D28NXLR92W');
-    };
-    try { if (localStorage.getItem('orbit_consent') === 'granted') { window.loadGA(); } } catch (e) {}
+    var __orbitConsent = 'denied';
+    try { if (localStorage.getItem('orbit_consent') === 'granted') { __orbitConsent = 'granted'; } } catch (e) {}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': __orbitConsent
+    });
+    gtag('js', new Date());
+    gtag('config', 'G-D28NXLR92W');
   </script>
 
   <!-- Open Graph / social -->
@@ -757,7 +757,9 @@
       function setConsent(value) {
         try { localStorage.setItem("orbit_consent", value); } catch (e) {}
         if (banner) { banner.classList.remove("show"); }
-        if (value === "granted" && typeof window.loadGA === "function") { window.loadGA(); }
+        if (typeof window.gtag === "function") {
+          window.gtag('consent', 'update', { 'analytics_storage': value === "granted" ? 'granted' : 'denied' });
+        }
       }
       (function () {
         var stored = null;
