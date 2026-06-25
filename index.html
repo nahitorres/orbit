@@ -12,8 +12,8 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    var __orbitConsent = 'denied';
-    try { if (localStorage.getItem('orbit_consent') === 'granted') { __orbitConsent = 'granted'; } } catch (e) {}
+    var __orbitConsent = 'granted';
+    try { if (localStorage.getItem('orbit_consent') === 'denied') { __orbitConsent = 'denied'; } } catch (e) {}
     gtag('consent', 'default', {
       'ad_storage': 'denied',
       'ad_user_data': 'denied',
