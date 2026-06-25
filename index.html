@@ -486,11 +486,12 @@
         <h2>Be first when ORBIT lands in your city.</h2>
         <p class="sub">Join the waitlist and we'll bring it to yours next.</p>
 
-        <!-- Email capture.
-             To wire a real backend: set FORMSPREE_ENDPOINT below to your
-             https://formspree.io/f/XXXX URL. Until then it stores signups
-             locally and shows the success state for the demo. -->
-        <form id="waitlist-form" novalidate>
+        <!-- Email capture (Formspree).
+             Replace YOUR_FORM_ID in the action below with your real Formspree
+             form id (from https://formspree.io/f/XXXX). The form natively POSTs
+             to Formspree; JS enhances it to submit without a reload. Until a
+             real id is set, it falls back to a local-demo success state. -->
+        <form id="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
           <div class="field-row">
             <div class="field">
               <label for="email">Email <span aria-hidden="true">*</span></label>
@@ -502,6 +503,8 @@
               <input type="text" id="city" name="city" autocomplete="address-level2" placeholder="Where are you?" />
             </div>
           </div>
+          <input type="hidden" name="_subject" value="New ORBIT waitlist signup" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
           <button type="submit" class="btn btn-primary">Join the waitlist</button>
           <p class="form-error" id="form-error" role="alert" aria-live="assertive"></p>
         </form>
@@ -584,9 +587,8 @@
       "use strict";
 
       /* ---------- Config ---------- */
-      // Paste your Formspree endpoint here to collect emails for real.
-      // Leave blank to use the local-demo fallback.
-      var FORMSPREE_ENDPOINT = ""; // e.g. "https://formspree.io/f/abcdwxyz"
+      // The form POSTs to its action="" (set on the <form> in the HTML above).
+      // Replace YOUR_FORM_ID there with your real Formspree id to go live.
       var STORE_KEY = "orbit_waitlist";
 
       /* ---------- Tiny analytics (console-safe fallback) ---------- */
@@ -675,14 +677,16 @@
 
           var entry = { email: email, city: city, ts: new Date().toISOString() };
           var submitBtn = form.querySelector("button[type=submit]");
+          var endpoint = form.getAttribute("action") || "";
+          var configured = /formspree\.io\/f\/.+/.test(endpoint) && endpoint.indexOf("YOUR_FORM_ID") === -1;
 
-          // Real backend if configured, otherwise local-demo fallback.
-          if (FORMSPREE_ENDPOINT) {
+          // Real Formspree backend if configured, otherwise local-demo fallback.
+          if (configured) {
             if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Joining…"; }
-            fetch(FORMSPREE_ENDPOINT, {
+            fetch(endpoint, {
               method: "POST",
-              headers: { "Accept": "application/json", "Content-Type": "application/json" },
-              body: JSON.stringify(entry)
+              headers: { "Accept": "application/json" },
+              body: new FormData(form)
             })
             .then(function (res) {
               if (res.ok) { onSuccess(entry); }
