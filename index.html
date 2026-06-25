@@ -7,13 +7,21 @@
   <meta name="description" content="ORBIT is a live, anonymous map of where the right energy is — so you can find the good crowd. No account. No name. No tracking." />
   <meta name="theme-color" content="#182045" />
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D28NXLR92W"></script>
+  <!-- Google Analytics 4 — loaded only after cookie consent -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-D28NXLR92W');
+    window.loadGA = function () {
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-D28NXLR92W';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-D28NXLR92W');
+    };
+    try { if (localStorage.getItem('orbit_consent') === 'granted') { window.loadGA(); } } catch (e) {}
   </script>
 
   <!-- Open Graph / social -->
@@ -292,6 +300,21 @@
     footer.site .closing { max-width: 50ch; margin: 0 auto 26px; color: #c9c2b0; font-size: 0.98rem; }
     footer.site .legal { font-size: 0.82rem; color: #8f8a79; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; }
 
+    /* Cookie consent */
+    .cookie-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; padding: 16px; display: none; justify-content: center; }
+    .cookie-banner.show { display: flex; }
+    .cookie-inner {
+      width: 100%; max-width: 720px; background: var(--navy); color: #e4ddca;
+      border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius);
+      box-shadow: var(--shadow-lg); padding: 18px 22px;
+      display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    }
+    .cookie-text { margin: 0; font-size: 0.92rem; line-height: 1.5; flex: 1 1 300px; }
+    .cookie-text a { color: var(--gold); text-decoration: underline; }
+    .cookie-actions { display: flex; gap: 10px; flex: none; }
+    .cookie-banner .btn { padding: 10px 22px; font-size: 0.95rem; }
+    @media (max-width: 540px) { .cookie-actions { width: 100%; } .cookie-actions .btn { flex: 1; } }
+
     /* Reveal on scroll */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.in { opacity: 1; transform: none; }
@@ -465,7 +488,7 @@
   </section>
 
   <!-- PRIVACY -->
-  <section class="privacy reveal">
+  <section class="privacy reveal" id="privacy">
     <div class="wrap">
       <p class="eyebrow" style="color:var(--gold)">The trust moment</p>
       <h2>Private by design.</h2>
@@ -589,6 +612,19 @@
       <div class="legal">© <span id="year">2026</span> ORBIT · Built privacy-first.</div>
     </div>
   </footer>
+
+  <!-- Cookie consent banner -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+    <div class="cookie-inner">
+      <p class="cookie-text">
+        We use analytics cookies (Google Analytics) to see how many people visit and improve ORBIT. No ads, no data sold. <a href="#privacy">How we handle data</a>.
+      </p>
+      <div class="cookie-actions">
+        <button type="button" class="btn btn-ghost" id="cookie-decline">Decline</button>
+        <button type="button" class="btn btn-primary" id="cookie-accept">Accept</button>
+      </div>
+    </div>
+  </div>
 
   <!-- JS: form handling, analytics, scroll reveal -->
   <script>
@@ -715,6 +751,23 @@
           }
         });
       }
+
+      /* ---------- Cookie consent ---------- */
+      var banner = document.getElementById("cookie-banner");
+      function setConsent(value) {
+        try { localStorage.setItem("orbit_consent", value); } catch (e) {}
+        if (banner) { banner.classList.remove("show"); }
+        if (value === "granted" && typeof window.loadGA === "function") { window.loadGA(); }
+      }
+      (function () {
+        var stored = null;
+        try { stored = localStorage.getItem("orbit_consent"); } catch (e) {}
+        if (!stored && banner) { banner.classList.add("show"); }
+      })();
+      var consentAccept = document.getElementById("cookie-accept");
+      var consentDecline = document.getElementById("cookie-decline");
+      if (consentAccept) { consentAccept.addEventListener("click", function () { setConsent("granted"); }); }
+      if (consentDecline) { consentDecline.addEventListener("click", function () { setConsent("denied"); }); }
 
       /* ---------- Scroll reveal ---------- */
       var reveals = document.querySelectorAll(".reveal");
