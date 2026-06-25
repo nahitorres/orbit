@@ -41,7 +41,7 @@
   <!-- wordmark -->
   <g transform="translate(90,90)">
     <circle cx="14" cy="14" r="14" fill="#EB7A63"/>
-    <text x="44" y="26" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800" fill="#ffffff">Kuni</text>
+    <text x="44" y="26" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800" fill="#ffffff">Orbit</text>
   </g>
 
   <!-- eyebrow -->
