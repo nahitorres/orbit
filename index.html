@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Orbit — See the city's social weather</title>
   <meta name="description" content="Orbit is a live, anonymous map of where the right energy is tonight — so you can find the good crowd, or avoid the wrong one. No account. No name. No tracking." />
-  <meta name="theme-color" content="#0E2841" />
+  <meta name="theme-color" content="#182045" />
 
   <!-- Open Graph / social -->
   <meta property="og:type" content="website" />
@@ -19,8 +19,8 @@
   <meta name="twitter:description" content="A live, anonymous map of where the right energy is tonight. No account. No name. No tracking." />
   <meta name="twitter:image" content="og-image.svg" />
 
-  <!-- Favicon (inline moon) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230E2841'/%3E%3Cellipse cx='16' cy='16' rx='11' ry='4.5' fill='none' stroke='%2329B6CC' stroke-width='1.6' transform='rotate(-30 16 16)'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%2329B6CC'/%3E%3Ccircle cx='25' cy='11' r='2.4' fill='%23EB7A63'/%3E%3C/svg%3E" />
+  <!-- Favicon (orbit ring + planet) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23182045'/%3E%3Cellipse cx='16' cy='16' rx='11' ry='4.5' fill='none' stroke='%23FDC43E' stroke-width='1.6' transform='rotate(-30 16 16)'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23FDC43E'/%3E%3Ccircle cx='25' cy='11' r='2.4' fill='%23E4B486'/%3E%3C/svg%3E" />
 
   <!-- Fonts: preconnect + Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,24 +29,31 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
 
-  <!-- Critical CSS, inlined -->
+  <!-- Critical CSS, inlined. Palette: NUCLY "The Astronaut" -->
   <style>
     :root {
-      --navy: #0E2841;
-      --navy-2: #0a1f33;
-      --offwhite: #F4F6FA;
-      --coral: #EB7A63;
-      --coral-dark: #e0654c;
-      --teal: #29B6CC;
-      --blue: #00B0F0;
-      --ink: #0E2841;
-      --muted: #5a6b7d;
-      --muted-light: #aebccb;
+      /* The Astronaut palette */
+      --navy: #182045;       /* deep navy — dark sections */
+      --navy-2: #10153a;     /* darker navy — footer */
+      --cream: #EFE4C9;      /* light section background */
+      --cream-line: #e6dcc4; /* warm hairline on cream */
+      --sand: #E4B486;       /* warm accent */
+      --sand-dark: #cf914f;  /* readable sand for text */
+      --gold: #FDC43E;       /* primary CTA / highlight */
+      --gold-dark: #ecae1c;  /* CTA hover */
+      --steel: #3D7590;      /* secondary accent / links */
+      --steel-light: #5E9BB5;/* lighter steel */
+
+      --ink: #182045;        /* text on light */
+      --muted: #4d5763;      /* muted text on light */
+      --muted-light: #cbc4b2;/* muted text on dark */
+      --warm-white: #FBF8EF; /* headings/text on dark */
+
       --radius: 16px;
       --radius-pill: 999px;
       --maxw: 1120px;
-      --shadow: 0 10px 40px rgba(14, 40, 65, 0.12);
-      --shadow-lg: 0 24px 70px rgba(14, 40, 65, 0.22);
+      --shadow: 0 10px 40px rgba(24, 32, 69, 0.12);
+      --shadow-lg: 0 24px 70px rgba(16, 21, 58, 0.30);
     }
 
     * { box-sizing: border-box; }
@@ -55,7 +62,7 @@
       margin: 0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       color: var(--ink);
-      background: var(--offwhite);
+      background: var(--cream);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -72,64 +79,65 @@
     .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
     .eyebrow {
       font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--teal);
+      text-transform: uppercase; color: var(--steel);
     }
 
     /* Buttons */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
-      font: inherit; font-weight: 600; cursor: pointer;
+      font: inherit; font-weight: 700; cursor: pointer;
       border: none; border-radius: var(--radius-pill);
       padding: 14px 26px; font-size: 1rem; text-decoration: none;
       transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
       white-space: nowrap;
     }
     .btn-primary {
-      background: var(--coral); color: #fff;
-      box-shadow: 0 8px 22px rgba(235, 122, 99, 0.4);
+      background: var(--gold); color: var(--navy);
+      box-shadow: 0 8px 22px rgba(253, 196, 62, 0.4);
     }
-    .btn-primary:hover { background: var(--coral-dark); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(235, 122, 99, 0.5); }
+    .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(253, 196, 62, 0.5); }
     .btn-ghost {
       background: rgba(255,255,255,0.08); color: #fff;
       border: 1px solid rgba(255,255,255,0.25);
     }
     .btn-ghost:hover { background: rgba(255,255,255,0.16); }
-    .btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 
     /* Nav */
     header.nav {
       position: sticky; top: 0; z-index: 50;
-      background: rgba(14, 40, 65, 0.85);
+      background: rgba(24, 32, 69, 0.85);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.3rem; color: #fff; text-decoration: none; letter-spacing: -0.01em; }
-    .wordmark .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 14px var(--coral); animation: pulse 3s ease-in-out infinite; }
+    .wordmark .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 14px var(--gold); animation: pulse 3s ease-in-out infinite; }
     .nav .btn { padding: 10px 20px; }
 
     /* Hero */
-    .hero { position: relative; background: var(--navy); color: #fff; overflow: hidden; }
+    .hero { position: relative; background: var(--navy); color: var(--warm-white); overflow: hidden; }
     .hero::after {
       content: ""; position: absolute; inset: 0; pointer-events: none;
       background:
-        radial-gradient(420px 320px at 78% 30%, rgba(41,182,204,0.16), transparent 70%),
-        radial-gradient(360px 300px at 88% 70%, rgba(0,176,240,0.12), transparent 70%);
+        radial-gradient(420px 320px at 78% 30%, rgba(61,117,144,0.30), transparent 70%),
+        radial-gradient(360px 300px at 88% 70%, rgba(253,196,62,0.16), transparent 70%);
     }
     .hero-grid {
       position: relative; z-index: 2;
       display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
       padding: 64px 0 84px;
     }
-    .hero h1 { font-size: clamp(2.4rem, 5.4vw, 4rem); font-weight: 800; margin: 18px 0 20px; }
-    .hero .sub { font-size: clamp(1.05rem, 1.6vw, 1.28rem); color: #d6e1ee; max-width: 36ch; margin-bottom: 30px; }
+    .hero h1 { font-size: clamp(2.4rem, 5.4vw, 4rem); font-weight: 800; margin: 18px 0 20px; color: #fff; }
+    .hero .sub { font-size: clamp(1.05rem, 1.6vw, 1.28rem); color: #e4ddca; max-width: 36ch; margin-bottom: 30px; }
     .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
     .hero-note { color: var(--muted-light); font-size: 0.92rem; margin-top: 18px; display: flex; align-items: center; gap: 8px; }
+    .hero-note svg { color: var(--gold); }
 
     /* Hero map visual */
     .map-card {
       position: relative; aspect-ratio: 4 / 3.4; border-radius: 24px; overflow: hidden;
-      background: linear-gradient(160deg, #123250, #0a1f33);
+      background: linear-gradient(160deg, #20294f, #10153a);
       box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,0.08);
     }
     .map-card svg { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -139,8 +147,8 @@
     .blob.b3 { animation: float3 13s ease-in-out infinite; }
     .map-legend {
       position: absolute; left: 16px; bottom: 16px; z-index: 3;
-      display: flex; gap: 14px; font-size: 0.74rem; color: #cdd9e6;
-      background: rgba(10,31,51,0.6); padding: 8px 12px; border-radius: 12px;
+      display: flex; gap: 14px; font-size: 0.74rem; color: #e4ddca;
+      background: rgba(16,21,58,0.6); padding: 8px 12px; border-radius: 12px;
       backdrop-filter: blur(6px);
     }
     .map-legend span { display: flex; align-items: center; gap: 6px; }
@@ -148,10 +156,10 @@
     .live-pill {
       position: absolute; right: 16px; top: 16px; z-index: 3;
       display: flex; align-items: center; gap: 7px;
-      background: rgba(10,31,51,0.65); color: #fff; font-size: 0.74rem; font-weight: 600;
+      background: rgba(16,21,58,0.65); color: #fff; font-size: 0.74rem; font-weight: 600;
       padding: 7px 12px; border-radius: var(--radius-pill); backdrop-filter: blur(6px);
     }
-    .live-pill i { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 10px #4ade80; animation: pulse 1.8s ease-in-out infinite; }
+    .live-pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); animation: pulse 1.8s ease-in-out infinite; }
 
     @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .55; transform: scale(.82); } }
     @keyframes float1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(14px,-12px) scale(1.06); } }
@@ -168,14 +176,14 @@
     .problem { background: #fff; }
     .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .problem-card {
-      background: var(--offwhite); border-radius: var(--radius); padding: 32px 28px;
-      border: 1px solid #e6ebf2; font-size: 1.12rem; font-weight: 500; color: var(--ink);
+      background: var(--cream); border-radius: var(--radius); padding: 32px 28px;
+      border: 1px solid var(--cream-line); font-size: 1.12rem; font-weight: 500; color: var(--ink);
     }
-    .problem-card .num { font-size: 0.85rem; font-weight: 700; color: var(--coral); letter-spacing: 0.1em; margin-bottom: 14px; }
-    .problem-card em { color: var(--teal); font-style: italic; }
+    .problem-card .num { font-size: 0.85rem; font-weight: 700; color: var(--steel); letter-spacing: 0.1em; margin-bottom: 14px; }
+    .problem-card em { color: var(--steel); font-style: italic; }
 
     /* How it works */
-    .how { background: var(--offwhite); }
+    .how { background: var(--cream); }
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
     .step {
       background: #fff; border-radius: var(--radius); padding: 36px 30px;
@@ -185,24 +193,24 @@
       width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center;
       margin-bottom: 22px; color: #fff;
     }
-    .step:nth-child(1) .icon { background: linear-gradient(140deg, var(--coral), #f0997f); }
-    .step:nth-child(2) .icon { background: linear-gradient(140deg, var(--teal), var(--blue)); }
-    .step:nth-child(3) .icon { background: linear-gradient(140deg, var(--blue), #5ac8fa); }
+    .step:nth-child(1) .icon { background: linear-gradient(140deg, var(--steel), var(--steel-light)); }
+    .step:nth-child(2) .icon { background: linear-gradient(140deg, var(--navy), var(--steel)); }
+    .step:nth-child(3) .icon { background: linear-gradient(140deg, var(--gold), var(--sand)); color: var(--navy); }
     .step h3 { font-size: 1.3rem; margin-bottom: 8px; }
     .step p { color: var(--muted); margin: 0; }
-    .step .stepnum { position: absolute; top: 22px; right: 26px; font-size: 2.6rem; font-weight: 800; color: #eef2f7; line-height: 1; }
+    .step .stepnum { position: absolute; top: 22px; right: 26px; font-size: 2.6rem; font-weight: 800; color: #f3eee0; line-height: 1; }
 
     /* Privacy */
     .privacy { background: var(--navy); color: #fff; text-align: center; }
     .privacy h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); font-weight: 800; }
-    .privacy .lead { color: #cdd9e6; max-width: 50ch; margin: 18px auto 40px; font-size: 1.1rem; }
+    .privacy .lead { color: var(--muted-light); max-width: 50ch; margin: 18px auto 40px; font-size: 1.1rem; }
     .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
     .chip {
       display: flex; align-items: center; gap: 10px;
-      background: rgba(41,182,204,0.12); border: 1px solid rgba(41,182,204,0.35);
-      color: #eaf6f8; padding: 14px 22px; border-radius: var(--radius-pill); font-weight: 500;
+      background: rgba(61,117,144,0.18); border: 1px solid rgba(61,117,144,0.5);
+      color: #eaf1f4; padding: 14px 22px; border-radius: var(--radius-pill); font-weight: 500;
     }
-    .chip svg { color: var(--teal); flex: none; }
+    .chip svg { color: var(--steel-light); flex: none; }
 
     /* Two modes */
     .modes { background: #fff; }
@@ -212,69 +220,69 @@
       position: relative; transition: transform .2s ease;
     }
     .mode:hover { transform: translateY(-4px); }
-    .mode.socialise { background: linear-gradient(160deg, rgba(41,182,204,0.1), rgba(0,176,240,0.06)); border-color: rgba(41,182,204,0.4); }
-    .mode.avoid { background: linear-gradient(160deg, rgba(235,122,99,0.1), rgba(235,122,99,0.04)); border-color: rgba(235,122,99,0.4); }
+    .mode.socialise { background: linear-gradient(160deg, rgba(61,117,144,0.12), rgba(94,155,181,0.07)); border-color: rgba(61,117,144,0.4); }
+    .mode.avoid { background: linear-gradient(160deg, rgba(228,180,134,0.20), rgba(228,180,134,0.07)); border-color: rgba(228,180,134,0.6); }
     .mode .tag { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.15rem; margin-bottom: 10px; }
-    .mode.socialise .tag { color: var(--teal); }
-    .mode.avoid .tag { color: var(--coral-dark); }
+    .mode.socialise .tag { color: var(--steel); }
+    .mode.avoid .tag { color: var(--sand-dark); }
     .mode p { color: var(--muted); margin: 0; }
     .toggle-visual { display: flex; justify-content: center; margin-bottom: 36px; }
     .toggle {
-      display: inline-flex; background: var(--offwhite); border-radius: var(--radius-pill);
-      padding: 6px; gap: 4px; border: 1px solid #e6ebf2;
+      display: inline-flex; background: var(--cream); border-radius: var(--radius-pill);
+      padding: 6px; gap: 4px; border: 1px solid var(--cream-line);
     }
     .toggle button {
       font: inherit; font-weight: 600; border: none; cursor: pointer;
       padding: 10px 24px; border-radius: var(--radius-pill); background: transparent; color: var(--muted);
       transition: all .2s ease;
     }
-    .toggle button.active.s { background: var(--teal); color: #fff; }
-    .toggle button.active.a { background: var(--coral); color: #fff; }
+    .toggle button.active.s { background: var(--steel); color: #fff; }
+    .toggle button.active.a { background: var(--sand); color: var(--navy); }
 
     /* Waitlist form */
     .waitlist { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
     .waitlist::after {
       content: ""; position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(500px 380px at 50% 0%, rgba(41,182,204,0.18), transparent 70%);
+      background: radial-gradient(500px 380px at 50% 0%, rgba(61,117,144,0.24), transparent 70%);
     }
     .form-card {
       position: relative; z-index: 2; max-width: 560px; margin: 0 auto; text-align: center;
     }
     .form-card h2 { font-size: clamp(1.9rem, 3.8vw, 2.7rem); font-weight: 800; }
-    .form-card .sub { color: #cdd9e6; margin: 14px 0 32px; font-size: 1.08rem; }
+    .form-card .sub { color: var(--muted-light); margin: 14px 0 32px; font-size: 1.08rem; }
     form#waitlist-form { display: grid; gap: 12px; text-align: left; }
     .field-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; }
-    .field label { display: block; font-size: 0.8rem; font-weight: 600; color: #aebccb; margin-bottom: 6px; padding-left: 4px; }
+    .field label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--muted-light); margin-bottom: 6px; padding-left: 4px; }
     .field input {
       width: 100%; font: inherit; padding: 15px 18px; border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.06); color: #fff;
-      transition: border .2s ease, background .2s ease;
+      transition: border .2s ease, background .2s ease, box-shadow .2s ease;
     }
-    .field input::placeholder { color: #7e93a8; }
-    .field input:focus { outline: none; border-color: var(--blue); background: rgba(255,255,255,0.1); box-shadow: 0 0 0 3px rgba(0,176,240,0.25); }
-    .field input.invalid { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(235,122,99,0.25); }
+    .field input::placeholder { color: #9a9685; }
+    .field input:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.1); box-shadow: 0 0 0 3px rgba(253,196,62,0.3); }
+    .field input.invalid { border-color: var(--sand); box-shadow: 0 0 0 3px rgba(228,180,134,0.35); }
     form#waitlist-form .btn-primary { width: 100%; margin-top: 6px; padding: 16px; font-size: 1.05rem; }
     .microtrust { text-align: center; color: var(--muted-light); font-size: 0.9rem; margin-top: 16px; }
-    .form-error { color: #ffd2c8; font-size: 0.88rem; min-height: 1.2em; text-align: center; }
+    .form-error { color: #f3d9a6; font-size: 0.88rem; min-height: 1.2em; text-align: center; }
 
     /* Success state */
     .success {
       display: none; position: relative; z-index: 2; max-width: 520px; margin: 0 auto; text-align: center;
-      background: rgba(41,182,204,0.1); border: 1px solid rgba(41,182,204,0.4);
+      background: rgba(61,117,144,0.14); border: 1px solid rgba(61,117,144,0.45);
       border-radius: var(--radius); padding: 44px 36px;
     }
     .success.show { display: block; animation: pop .45s cubic-bezier(.2,.9,.3,1.3); }
-    .success .check { width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; background: var(--teal); display: grid; place-items: center; box-shadow: 0 0 30px rgba(41,182,204,0.5); }
+    .success .check { width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; background: var(--gold); display: grid; place-items: center; box-shadow: 0 0 30px rgba(253,196,62,0.5); }
     .success h3 { font-size: 1.6rem; margin-bottom: 10px; }
-    .success p { color: #cdd9e6; margin: 0; }
+    .success p { color: var(--muted-light); margin: 0; }
     .count-line { margin-top: 22px; font-size: 0.9rem; color: var(--muted-light); }
     @keyframes pop { from { opacity: 0; transform: scale(.92) translateY(10px); } to { opacity: 1; transform: none; } }
 
     /* FAQ */
-    .faq { background: var(--offwhite); }
+    .faq { background: var(--cream); }
     .faq-list { max-width: 760px; margin: 0 auto; display: grid; gap: 14px; }
     details.qa {
-      background: #fff; border-radius: var(--radius); border: 1px solid #e6ebf2;
+      background: #fff; border-radius: var(--radius); border: 1px solid var(--cream-line);
       padding: 4px 24px; transition: box-shadow .2s ease;
     }
     details.qa[open] { box-shadow: var(--shadow); }
@@ -283,22 +291,23 @@
       display: flex; justify-content: space-between; align-items: center; gap: 16px;
     }
     details.qa summary::-webkit-details-marker { display: none; }
-    details.qa summary .plus { flex: none; width: 26px; height: 26px; position: relative; transition: transform .25s ease; color: var(--coral); }
+    details.qa summary .plus { flex: none; width: 26px; height: 26px; position: relative; transition: transform .25s ease; color: var(--steel); }
     details.qa[open] summary .plus { transform: rotate(45deg); }
     details.qa p { color: var(--muted); margin: 0 0 22px; }
+    details.qa em { color: var(--steel); font-style: italic; }
 
     /* Footer */
     footer.site {
-      background: var(--navy-2); color: #cdd9e6; padding: 56px 0 40px; text-align: center;
+      background: var(--navy-2); color: var(--muted-light); padding: 56px 0 40px; text-align: center;
     }
     footer.site .fwordmark { font-weight: 800; font-size: 1.4rem; color: #fff; margin-bottom: 6px; }
-    footer.site .tagline { color: var(--teal); margin-bottom: 4px; }
+    footer.site .tagline { color: var(--gold); margin-bottom: 4px; }
     footer.site .esperanto { font-size: 0.9rem; color: var(--muted-light); font-style: italic; margin-bottom: 24px; }
     footer.site .flinks { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-bottom: 28px; }
-    footer.site .flinks a { text-decoration: none; color: #cdd9e6; font-weight: 500; transition: color .2s ease; }
+    footer.site .flinks a { text-decoration: none; color: #d8d2c2; font-weight: 500; transition: color .2s ease; }
     footer.site .flinks a:hover { color: #fff; }
-    footer.site .closing { max-width: 50ch; margin: 0 auto 26px; color: #aebccb; font-size: 0.98rem; }
-    footer.site .legal { font-size: 0.82rem; color: #6f8295; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; }
+    footer.site .closing { max-width: 50ch; margin: 0 auto 26px; color: #c9c2b0; font-size: 0.98rem; }
+    footer.site .legal { font-size: 0.82rem; color: #8f8a79; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; }
 
     /* Reveal on scroll */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
@@ -353,54 +362,54 @@
       </div>
 
       <!-- Stylised dark city map with glowing vibe blobs -->
-      <div class="map-card" role="img" aria-label="A stylised dark city map glowing with crowd-energy blobs">
+      <div class="map-card" role="img" aria-label="A stylised dark city map glowing with crowd-energy signals">
         <svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <defs>
-            <radialGradient id="g-teal" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#29B6CC" stop-opacity="0.95"/>
-              <stop offset="60%" stop-color="#29B6CC" stop-opacity="0.35"/>
-              <stop offset="100%" stop-color="#29B6CC" stop-opacity="0"/>
+            <radialGradient id="g-steel" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#3D7590" stop-opacity="0.95"/>
+              <stop offset="60%" stop-color="#3D7590" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#3D7590" stop-opacity="0"/>
             </radialGradient>
-            <radialGradient id="g-blue" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#00B0F0" stop-opacity="0.9"/>
-              <stop offset="60%" stop-color="#00B0F0" stop-opacity="0.3"/>
-              <stop offset="100%" stop-color="#00B0F0" stop-opacity="0"/>
+            <radialGradient id="g-gold" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#FDC43E" stop-opacity="0.9"/>
+              <stop offset="60%" stop-color="#FDC43E" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#FDC43E" stop-opacity="0"/>
             </radialGradient>
-            <radialGradient id="g-coral" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#EB7A63" stop-opacity="0.9"/>
-              <stop offset="60%" stop-color="#EB7A63" stop-opacity="0.3"/>
-              <stop offset="100%" stop-color="#EB7A63" stop-opacity="0"/>
+            <radialGradient id="g-sand" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#E4B486" stop-opacity="0.9"/>
+              <stop offset="60%" stop-color="#E4B486" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#E4B486" stop-opacity="0"/>
             </radialGradient>
           </defs>
 
           <!-- street grid -->
-          <g stroke="#21476b" stroke-width="1.4" opacity="0.7">
+          <g stroke="#2c376b" stroke-width="1.4" opacity="0.7">
             <path d="M0 70 H400 M0 140 H400 M0 210 H400 M0 280 H400"/>
             <path d="M70 0 V340 M150 0 V340 M250 0 V340 M330 0 V340"/>
           </g>
-          <g stroke="#2b5a85" stroke-width="2.4" opacity="0.6">
+          <g stroke="#3c4a86" stroke-width="2.4" opacity="0.6">
             <path d="M0 175 L400 120"/>
             <path d="M40 0 L250 340"/>
           </g>
           <!-- river -->
-          <path d="M-10 250 C 80 230, 120 300, 220 280 S 360 230, 410 260 L 410 340 L -10 340 Z" fill="#15324d" opacity="0.7"/>
+          <path d="M-10 250 C 80 230, 120 300, 220 280 S 360 230, 410 260 L 410 340 L -10 340 Z" fill="#1d2650" opacity="0.7"/>
 
-          <!-- glowing vibe blobs -->
-          <circle class="blob b1" cx="120" cy="110" r="74" fill="url(#g-teal)"/>
-          <circle class="blob b2" cx="280" cy="95"  r="62" fill="url(#g-blue)"/>
-          <circle class="blob b3" cx="300" cy="215" r="58" fill="url(#g-coral)"/>
-          <circle class="blob b1" cx="180" cy="200" r="44" fill="url(#g-blue)"/>
+          <!-- glowing vibe signals -->
+          <circle class="blob b1" cx="120" cy="110" r="74" fill="url(#g-steel)"/>
+          <circle class="blob b2" cx="280" cy="95"  r="62" fill="url(#g-gold)"/>
+          <circle class="blob b3" cx="300" cy="215" r="58" fill="url(#g-sand)"/>
+          <circle class="blob b1" cx="180" cy="200" r="44" fill="url(#g-gold)"/>
 
           <!-- hot cores -->
-          <circle cx="120" cy="110" r="5" fill="#bdf2f8"/>
-          <circle cx="280" cy="95" r="5" fill="#cdeeff"/>
-          <circle cx="300" cy="215" r="5" fill="#ffd9cd"/>
+          <circle cx="120" cy="110" r="5" fill="#cfe2ec"/>
+          <circle cx="280" cy="95" r="5" fill="#fff0c2"/>
+          <circle cx="300" cy="215" r="5" fill="#f4e0c8"/>
         </svg>
         <div class="live-pill"><i aria-hidden="true"></i> Live now</div>
         <div class="map-legend">
-          <span><i style="background:#29B6CC"></i> Chill</span>
-          <span><i style="background:#00B0F0"></i> Buzzing</span>
-          <span><i style="background:#EB7A63"></i> Heavy</span>
+          <span><i style="background:#3D7590"></i> Chill</span>
+          <span><i style="background:#FDC43E"></i> Buzzing</span>
+          <span><i style="background:#E4B486"></i> Heavy</span>
         </div>
       </div>
     </div>
@@ -444,7 +453,7 @@
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
           </div>
           <h3>Drop</h3>
-          <p>Leave a short-lived vibe signal when you're out. Two taps, no post, no profile.</p>
+          <p>Leave a short-lived signal when you're out. Two taps, no post, no profile.</p>
         </div>
         <div class="step">
           <span class="stepnum">2</span>
@@ -452,7 +461,7 @@
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
           <h3>Read</h3>
-          <p>The map glows by mood, crowd and freshness — so you see the night as it actually is.</p>
+          <p>The map lights up like a constellation — by mood, crowd and freshness — so you see the night as it actually is.</p>
         </div>
         <div class="step">
           <span class="stepnum">3</span>
@@ -469,7 +478,7 @@
   <!-- PRIVACY -->
   <section class="privacy reveal">
     <div class="wrap">
-      <p class="eyebrow" style="color:var(--blue)">The trust moment</p>
+      <p class="eyebrow" style="color:var(--gold)">The trust moment</p>
       <h2>Private by design.</h2>
       <p class="lead">Orbit only works because it can't expose you. Anonymity isn't a setting you turn on — it's the whole architecture.</p>
       <div class="chips">
@@ -525,7 +534,7 @@
   <section class="waitlist" id="waitlist">
     <div class="wrap">
       <div class="form-card" id="form-card">
-        <p class="eyebrow" style="color:var(--coral)">Early access</p>
+        <p class="eyebrow" style="color:var(--gold)">Early access</p>
         <h2>Be first when Orbit lands in your city.</h2>
         <p class="sub">We're piloting one city first. Join the waitlist and we'll bring it to yours next.</p>
 
@@ -541,7 +550,7 @@
                      placeholder="you@email.com" required aria-required="true" />
             </div>
             <div class="field">
-              <label for="city">City <span style="font-weight:400;color:#7e93a8">(optional)</span></label>
+              <label for="city">City <span style="font-weight:400;color:#9a9685">(optional)</span></label>
               <input type="text" id="city" name="city" autocomplete="address-level2" placeholder="Where are you?" />
             </div>
           </div>
@@ -554,7 +563,7 @@
       <!-- Success state -->
       <div class="success" id="success" role="status" aria-live="polite">
         <div class="check" aria-hidden="true">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#182045" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
         <h3>You're on the list 🌙</h3>
         <p>We'll text you when Orbit goes live in your city.</p>
@@ -593,7 +602,7 @@
           <summary>When does it launch?
             <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </summary>
-          <p>We're piloting one city first. Join the waitlist to bring it to yours — the cities with the most signups go next.</p>
+          <p>We're piloting one city first. Join the waitlist to bring it to yours — the cities with the most signals go next.</p>
         </details>
       </div>
     </div>
