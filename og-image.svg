@@ -38,11 +38,15 @@
   <circle cx="1050" cy="160" r="8" fill="#fff0c2"/>
   <circle cx="1010" cy="420" r="8" fill="#f4e0c8"/>
 
-  <!-- wordmark -->
-  <g transform="translate(90,90)">
-    <circle cx="14" cy="14" r="14" fill="#FDC43E"/>
-    <text x="44" y="26" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800" fill="#ffffff">Orbit</text>
+  <!-- wordmark + logo -->
+  <g transform="translate(86,70) scale(0.5)">
+    <path d="M66.9 86.25 A40 40 0 1 1 78.28 78.28" fill="none" stroke="#3D7590" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="72.94" cy="82.77" r="3.2" fill="#3D7590"/>
+    <path d="M52.18 74.9 A25 25 0 1 1 70.48 64.34" fill="none" stroke="#FDC43E" stroke-width="6.5" stroke-linecap="round"/>
+    <path d="M49.04 60.96 A11 11 0 1 1 59.97 54.65" fill="none" stroke="#FDC43E" stroke-width="6.5" stroke-linecap="round"/>
+    <circle cx="62.2" cy="27.04" r="8" fill="#FDC43E"/>
   </g>
+  <text x="148" y="122" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800" fill="#ffffff">Orbit</text>
 
   <!-- eyebrow -->
   <text x="90" y="270" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" letter-spacing="4" fill="#5E9BB5">SEE THE CITY'S SOCIAL WEATHER</text>

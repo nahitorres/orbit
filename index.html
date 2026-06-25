@@ -19,8 +19,9 @@
   <meta name="twitter:description" content="A live, anonymous map of where the right energy is tonight. No account. No name. No tracking." />
   <meta name="twitter:image" content="og-image.svg" />
 
-  <!-- Favicon (orbit ring + planet) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23182045'/%3E%3Cellipse cx='16' cy='16' rx='11' ry='4.5' fill='none' stroke='%23FDC43E' stroke-width='1.6' transform='rotate(-30 16 16)'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23FDC43E'/%3E%3Ccircle cx='25' cy='11' r='2.4' fill='%23E4B486'/%3E%3C/svg%3E" />
+  <!-- Favicon (Orbit logo) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
 
   <!-- Fonts: preconnect + Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -112,7 +113,7 @@
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.3rem; color: #fff; text-decoration: none; letter-spacing: -0.01em; }
-    .wordmark .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 14px var(--gold); animation: pulse 3s ease-in-out infinite; }
+    .wordmark .logo { display: block; flex: none; filter: drop-shadow(0 0 8px rgba(253,196,62,0.22)); }
     .nav .btn { padding: 10px 20px; }
 
     /* Hero */
@@ -300,6 +301,7 @@
     footer.site {
       background: var(--navy-2); color: var(--muted-light); padding: 56px 0 40px; text-align: center;
     }
+    footer.site .flogo { display: block; margin: 0 auto 14px; filter: drop-shadow(0 0 10px rgba(253,196,62,0.18)); }
     footer.site .fwordmark { font-weight: 800; font-size: 1.4rem; color: #fff; margin-bottom: 6px; }
     footer.site .tagline { color: var(--gold); margin-bottom: 4px; }
     footer.site .esperanto { font-size: 0.9rem; color: var(--muted-light); font-style: italic; margin-bottom: 24px; }
@@ -336,8 +338,14 @@
   <!-- NAV -->
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="wordmark" href="#top">
-        <span class="dot" aria-hidden="true"></span>
+      <a class="wordmark" href="#top" aria-label="Orbit home">
+        <svg class="logo" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
+          <path d="M66.9 86.25 A40 40 0 1 1 78.28 78.28" fill="none" stroke="#3D7590" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="72.94" cy="82.77" r="3.2" fill="#3D7590"/>
+          <path d="M52.18 74.9 A25 25 0 1 1 70.48 64.34" fill="none" stroke="#FDC43E" stroke-width="6.5" stroke-linecap="round"/>
+          <path d="M49.04 60.96 A11 11 0 1 1 59.97 54.65" fill="none" stroke="#FDC43E" stroke-width="6.5" stroke-linecap="round"/>
+          <circle cx="62.2" cy="27.04" r="8" fill="#FDC43E"/>
+        </svg>
         <span>Orbit</span>
       </a>
       <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
@@ -611,6 +619,13 @@
   <!-- FOOTER -->
   <footer class="site">
     <div class="wrap">
+      <svg class="flogo" viewBox="0 0 100 100" width="48" height="48" aria-hidden="true">
+        <path d="M66.9 86.25 A40 40 0 1 1 78.28 78.28" fill="none" stroke="#3D7590" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="72.94" cy="82.77" r="3.2" fill="#3D7590"/>
+        <path d="M52.18 74.9 A25 25 0 1 1 70.48 64.34" fill="none" stroke="#FDC43E" stroke-width="6.5" stroke-linecap="round"/>
+        <path d="M49.04 60.96 A11 11 0 1 1 59.97 54.65" fill="none" stroke="#FDC43E" stroke-width="6.5" stroke-linecap="round"/>
+        <circle cx="62.2" cy="27.04" r="8" fill="#FDC43E"/>
+      </svg>
       <div class="fwordmark">Orbit</div>
       <div class="tagline">See the city's social weather.</div>
       <div class="esperanto">Everyone has an orbit — <em>find yours tonight</em>.</div>
