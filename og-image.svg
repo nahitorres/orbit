@@ -46,7 +46,7 @@
     <path d="M49.04 60.96 A11 11 0 1 1 59.97 54.65" fill="none" stroke="#FDC43E" stroke-width="6.5" stroke-linecap="round"/>
     <circle cx="62.2" cy="27.04" r="8" fill="#FDC43E"/>
   </g>
-  <text x="148" y="122" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800" fill="#ffffff">Orbit</text>
+  <text x="148" y="122" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800" fill="#ffffff">ORBIT</text>
 
   <!-- eyebrow -->
   <text x="90" y="270" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" letter-spacing="4" fill="#5E9BB5">SEE THE CITY'S SOCIAL WEATHER</text>
@@ -56,6 +56,6 @@
   <text x="88" y="430" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800" fill="#FBF8EF">in the real world.</text>
 
   <!-- sub -->
-  <text x="90" y="500" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="400" fill="#d8d2c2">A live, anonymous map of where the right energy is</text>
-  <text x="90" y="538" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="400" fill="#d8d2c2">tonight. No account. No name. No tracking.</text>
+  <text x="90" y="500" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="400" fill="#d8d2c2">A live, anonymous map of where the right energy is.</text>
+  <text x="90" y="538" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="400" fill="#d8d2c2">No account. No name. No tracking.</text>
 </svg>

@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orbit — See the city's social weather</title>
-  <meta name="description" content="Orbit is a live, anonymous map of where the right energy is tonight — so you can find the good crowd, or avoid the wrong one. No account. No name. No tracking." />
+  <title>ORBIT — See the city's social weather</title>
+  <meta name="description" content="ORBIT is a live, anonymous map of where the right energy is — so you can find the good crowd, or avoid the wrong one. No account. No name. No tracking." />
   <meta name="theme-color" content="#182045" />
 
   <!-- Open Graph / social -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Orbit — See the city's social weather" />
-  <meta property="og:description" content="A live, anonymous map of where the right energy is tonight. No account. No name. No tracking." />
+  <meta property="og:title" content="ORBIT — See the city's social weather" />
+  <meta property="og:description" content="A live, anonymous map of where the right energy is. No account. No name. No tracking." />
   <meta property="og:image" content="og-image.svg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Orbit — See the city's social weather" />
-  <meta name="twitter:description" content="A live, anonymous map of where the right energy is tonight. No account. No name. No tracking." />
+  <meta name="twitter:title" content="ORBIT — See the city's social weather" />
+  <meta name="twitter:description" content="A live, anonymous map of where the right energy is. No account. No name. No tracking." />
   <meta name="twitter:image" content="og-image.svg" />
 
-  <!-- Favicon (Orbit logo) -->
+  <!-- Favicon (ORBIT logo) -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" href="favicon.svg" />
 
@@ -213,33 +213,6 @@
     }
     .chip svg { color: var(--steel-light); flex: none; }
 
-    /* Two modes */
-    .modes { background: #fff; }
-    .modes-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 820px; margin: 0 auto; }
-    .mode {
-      border-radius: var(--radius); padding: 34px 30px; border: 2px solid transparent;
-      position: relative; transition: transform .2s ease;
-    }
-    .mode:hover { transform: translateY(-4px); }
-    .mode.socialise { background: linear-gradient(160deg, rgba(61,117,144,0.12), rgba(94,155,181,0.07)); border-color: rgba(61,117,144,0.4); }
-    .mode.avoid { background: linear-gradient(160deg, rgba(228,180,134,0.20), rgba(228,180,134,0.07)); border-color: rgba(228,180,134,0.6); }
-    .mode .tag { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.15rem; margin-bottom: 10px; }
-    .mode.socialise .tag { color: var(--steel); }
-    .mode.avoid .tag { color: var(--sand-dark); }
-    .mode p { color: var(--muted); margin: 0; }
-    .toggle-visual { display: flex; justify-content: center; margin-bottom: 36px; }
-    .toggle {
-      display: inline-flex; background: var(--cream); border-radius: var(--radius-pill);
-      padding: 6px; gap: 4px; border: 1px solid var(--cream-line);
-    }
-    .toggle button {
-      font: inherit; font-weight: 600; border: none; cursor: pointer;
-      padding: 10px 24px; border-radius: var(--radius-pill); background: transparent; color: var(--muted);
-      transition: all .2s ease;
-    }
-    .toggle button.active.s { background: var(--steel); color: #fff; }
-    .toggle button.active.a { background: var(--sand); color: var(--navy); }
-
     /* Waitlist form */
     .waitlist { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
     .waitlist::after {
@@ -304,7 +277,6 @@
     footer.site .flogo { display: block; margin: 0 auto 14px; filter: drop-shadow(0 0 10px rgba(253,196,62,0.18)); }
     footer.site .fwordmark { font-weight: 800; font-size: 1.4rem; color: #fff; margin-bottom: 6px; }
     footer.site .tagline { color: var(--gold); margin-bottom: 4px; }
-    footer.site .esperanto { font-size: 0.9rem; color: var(--muted-light); font-style: italic; margin-bottom: 24px; }
     footer.site .flinks { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-bottom: 28px; }
     footer.site .flinks a { text-decoration: none; color: #d8d2c2; font-weight: 500; transition: color .2s ease; }
     footer.site .flinks a:hover { color: #fff; }
@@ -338,7 +310,7 @@
   <!-- NAV -->
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="wordmark" href="#top" aria-label="Orbit home">
+      <a class="wordmark" href="#top" aria-label="ORBIT home">
         <svg class="logo" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
           <path d="M66.9 86.25 A40 40 0 1 1 78.28 78.28" fill="none" stroke="#3D7590" stroke-width="4" stroke-linecap="round"/>
           <circle cx="72.94" cy="82.77" r="3.2" fill="#3D7590"/>
@@ -346,7 +318,7 @@
           <path d="M49.04 60.96 A11 11 0 1 1 59.97 54.65" fill="none" stroke="#FDC43E" stroke-width="6.5" stroke-linecap="round"/>
           <circle cx="62.2" cy="27.04" r="8" fill="#FDC43E"/>
         </svg>
-        <span>Orbit</span>
+        <span>ORBIT</span>
       </a>
       <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
     </div>
@@ -358,7 +330,7 @@
       <div class="hero-copy">
         <p class="eyebrow">See the city's social weather</p>
         <h1>Find your people in the&nbsp;real&nbsp;world.</h1>
-        <p class="sub">Orbit is a live, anonymous map of where the right energy is tonight — so you can find the good crowd, or avoid the wrong one. No account. No name. No tracking.</p>
+        <p class="sub">ORBIT is a live, anonymous map of where the right energy is — so you can find the good crowd, or avoid the wrong one. No account. No name. No tracking.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#waitlist" id="hero-cta">Get early access</a>
           <a class="btn btn-ghost" href="#how">See how it works</a>
@@ -415,9 +387,9 @@
         </svg>
         <div class="live-pill"><i aria-hidden="true"></i> Live now</div>
         <div class="map-legend">
-          <span><i style="background:#3D7590"></i> Chill</span>
-          <span><i style="background:#FDC43E"></i> Buzzing</span>
-          <span><i style="background:#E4B486"></i> Heavy</span>
+          <span><i style="background:#3D7590"></i> Foodies</span>
+          <span><i style="background:#FDC43E"></i> Social gatherings</span>
+          <span><i style="background:#E4B486"></i> Outdoor</span>
         </div>
       </div>
     </div>
@@ -452,7 +424,7 @@
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">How it works</p>
-        <h2>Three taps to read the room — the whole city.</h2>
+        <h2>Three taps to read — the whole city.</h2>
       </div>
       <div class="steps">
         <div class="step">
@@ -488,7 +460,7 @@
     <div class="wrap">
       <p class="eyebrow" style="color:var(--gold)">The trust moment</p>
       <h2>Private by design.</h2>
-      <p class="lead">Orbit only works because it can't expose you. Anonymity isn't a setting you turn on — it's the whole architecture.</p>
+      <p class="lead">ORBIT only works because it can't expose you. Anonymity isn't a setting you turn on — it's the whole architecture.</p>
       <div class="chips">
         <span class="chip">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -506,45 +478,13 @@
     </div>
   </section>
 
-  <!-- TWO MODES -->
-  <section class="modes reveal">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Two modes, one map</p>
-        <h2>Chase the good night. Dodge the bad one.</h2>
-      </div>
-      <div class="toggle-visual">
-        <div class="toggle" role="group" aria-label="Mode preview">
-          <button type="button" class="s active" data-mode="s">Socialise</button>
-          <button type="button" class="a" data-mode="a">Avoid</button>
-        </div>
-      </div>
-      <div class="modes-wrap">
-        <div class="mode socialise">
-          <span class="tag">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z"/></svg>
-            Socialise
-          </span>
-          <p>Light up where the right crowd is gathering tonight and head straight for it.</p>
-        </div>
-        <div class="mode avoid">
-          <span class="tag">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M4.9 4.9l14.2 14.2"/></svg>
-            Avoid
-          </span>
-          <p>Flag the heavy, off, or overcrowded spots — and route your night around them.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- WAITLIST -->
   <section class="waitlist" id="waitlist">
     <div class="wrap">
       <div class="form-card" id="form-card">
         <p class="eyebrow" style="color:var(--gold)">Early access</p>
-        <h2>Be first when Orbit lands in your city.</h2>
-        <p class="sub">We're piloting one city first. Join the waitlist and we'll bring it to yours next.</p>
+        <h2>Be first when ORBIT lands in your city.</h2>
+        <p class="sub">Join the waitlist and we'll bring it to yours next.</p>
 
         <!-- Email capture.
              To wire a real backend: set FORMSPREE_ENDPOINT below to your
@@ -574,7 +514,7 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#182045" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
         <h3>You're on the list 🌙</h3>
-        <p>We'll text you when Orbit goes live in your city.</p>
+        <p>We'll text you when ORBIT goes live in your city.</p>
         <p class="count-line" id="count-line"></p>
       </div>
     </div>
@@ -598,7 +538,7 @@
           <summary>How is this different from Google Maps?
             <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </summary>
-          <p>Maps tells you <em>how busy</em> a place is. Orbit tells you <em>what kind of crowd</em> is there — and whether it's your scene — in real time.</p>
+          <p>Maps tells you <em>how busy</em> a place is. ORBIT tells you <em>what kind of crowd</em> is there — and whether it's your scene — in real time.</p>
         </details>
         <details class="qa">
           <summary>Does it cost anything?
@@ -610,7 +550,7 @@
           <summary>When does it launch?
             <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </summary>
-          <p>We're piloting one city first. Join the waitlist to bring it to yours — the cities with the most signals go next.</p>
+          <p>Join the waitlist to bring it to yours — the cities with the most signals go next.</p>
         </details>
       </div>
     </div>
@@ -626,16 +566,15 @@
         <path d="M49.04 60.96 A11 11 0 1 1 59.97 54.65" fill="none" stroke="#FDC43E" stroke-width="6.5" stroke-linecap="round"/>
         <circle cx="62.2" cy="27.04" r="8" fill="#FDC43E"/>
       </svg>
-      <div class="fwordmark">Orbit</div>
+      <div class="fwordmark">ORBIT</div>
       <div class="tagline">See the city's social weather.</div>
-      <div class="esperanto">Everyone has an orbit — <em>find yours tonight</em>.</div>
       <p class="closing">We're not building another social app. We're building a way for people to find their people in the real world.</p>
       <div class="flinks">
         <a href="#waitlist">Join the waitlist</a>
         <a href="mailto:n.torres@exus.ai">n.torres@exus.ai</a>
         <a href="#top">Back to top</a>
       </div>
-      <div class="legal">© <span id="year">2026</span> Orbit · Built privacy-first.</div>
+      <div class="legal">© <span id="year">2026</span> ORBIT · Built privacy-first.</div>
     </div>
   </footer>
 
@@ -676,15 +615,6 @@
           setTimeout(function () { emailEl.focus({ preventScroll: true }); }, 600);
         });
       }
-
-      /* ---------- Mode toggle (visual only) ---------- */
-      var toggleBtns = document.querySelectorAll(".toggle button");
-      toggleBtns.forEach(function (b) {
-        b.addEventListener("click", function () {
-          toggleBtns.forEach(function (x) { x.classList.remove("active"); });
-          b.classList.add("active");
-        });
-      });
 
       /* ---------- Local store helpers ---------- */
       function getStore() {
